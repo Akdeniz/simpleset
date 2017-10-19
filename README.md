@@ -1,6 +1,42 @@
 # simpleset
 Simple set implementation that uses basic linear probing
 
+#### Build & Run
+```
+-- build and install google benchmark
+git clone https://github.com/google/benchmark.git
+mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release -DBENCHMARK_ENABLE_LTO=true
+
+
+mkdir build && cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+./bench/BenchmarkSet
+
+Run on (8 X 3900 MHz CPU s)
+2017-10-19 16:03:45
+***WARNING*** CPU scaling is enabled, the benchmark real time measurements may be noisy and will incur extra overhead.
+--------------------------------------------------------------------------------
+Benchmark                                         Time           CPU Iterations
+--------------------------------------------------------------------------------
+BM_SimpleSetSequentialInsert/65536                3 ms          3 ms        233
+BM_SimpleSetSequentialInsert/262144              10 ms         10 ms         70
+BM_SimpleSetSequentialInsert/2097152             76 ms         76 ms          9
+BM_SimpleSetSequentialInsert/16777216           604 ms        604 ms          1
+BM_UnorderedSetSequentialInsert/65536             4 ms          4 ms        159
+BM_UnorderedSetSequentialInsert/262144           18 ms         18 ms         37
+BM_UnorderedSetSequentialInsert/2097152         147 ms        147 ms          5
+BM_UnorderedSetSequentialInsert/16777216       1081 ms       1081 ms          1
+BM_SimpleSetRandomInsert/65536                    9 ms          9 ms         81
+BM_SimpleSetRandomInsert/262144                  32 ms         32 ms         22
+BM_SimpleSetRandomInsert/2097152                306 ms        306 ms          2
+BM_SimpleSetRandomInsert/16777216              2954 ms       2954 ms          1
+BM_UnorderedSetRandomInsert/65536                 9 ms          9 ms         84
+BM_UnorderedSetRandomInsert/262144               74 ms         74 ms          9
+BM_UnorderedSetRandomInsert/2097152            1209 ms       1209 ms          1
+BM_UnorderedSetRandomInsert/16777216           9227 ms       9227 ms          1
+```
+
 #### Comparison:
  Comparison table below shows the performance and memory benefit at **insertion** phase compared to std::unordered_set.
 
